@@ -1,0 +1,15 @@
+from GetWorkerReputatio import Get_Worker_Reputation
+from GetWorkerReputationWithReviews import Get_Worker_Reputation_with_review
+import pandas as pd
+
+
+worker_df = pd.read_csv('C:/Users/Arwa/Desktop/datasets/Ex2/Freelancer_dataset_Ex2.csv')
+
+for  i in range (0,len(worker_df)):
+    worker_df.loc[i,'worker_rep_no_tasks'] = Get_Worker_Reputation(worker_df.loc[i])
+
+for  i in range (0,len(worker_df)):
+    worker_df.loc[i,'worker_rep_no_reviews'] = Get_Worker_Reputation_with_review(worker_df.loc[i])
+
+worker_df.to_csv('C:/Users/Arwa/Desktop/datasets/Ex2/Freelancer_dataset_rep_Ex2.csv')
+
